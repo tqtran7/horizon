@@ -22,6 +22,7 @@
    * angular's extensions.
    */
   var libraryModules = [
+    'ui.bootstrap',
     'ngCookies'
   ];
 

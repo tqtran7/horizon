@@ -1,0 +1,113 @@
+
+<div ng-controller="identity.users.workflows.create-user.controller">
+  <h1><translate>User Details</translate></h1>
+  <div class="content">
+
+    <div class="subtitle">
+      <translate>
+        The fields on this screen define the characteristics of a new user.
+      </translate>
+    </div>
+
+    <div class="selected-source clearfix">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <div class="form-group required"
+            ng-class="{'has-error':createUsersForm.name.$invalid && createUsersForm.name.$dirty}">
+            <label class="control-label required" for="createUsersForm-name">
+              <translate>User Name</translate>*
+            </label>
+            <input required
+              id="createUsersForm-name"
+              name="name"
+              class="form-control"
+              type="text"
+              ng-model="user.name"
+              ng-maxlength="255"
+              placeholder="{$ 'Enter a user name'|translate $}">
+            <p class="help-block alert alert-danger"
+              ng-show="createUsersForm.name.$invalid && createUsersForm.name.$dirty">
+              <translate>A user name less than 256 characters is required.</translate>
+            </p>
+          </div>
+        </div>
+      </div><!-- row -->
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <div class="form-group">
+            <label class="control-label" for="createUsersForm-email">
+              <translate>Email</translate>
+            </label>
+            <input
+              id="createUsersForm-email"
+              name="email" type="email" class="form-control"
+              ng-model="user.email"
+              placeholder="{$ 'user@domain.com'|translate $}">
+            <p class="help-block alert alert-danger"
+              ng-show="createUsersForm.email.$invalid">
+              <translate>Please enter a valid email address.</translate>
+            </p>
+          </div>
+        </div>
+      </div><!-- row -->
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <div class="form-group required"
+            ng-class="{'has-error':createUsersForm.password.$invalid && createUsersForm.password.$dirty}">
+            <label class="control-label required" for="createUsersForm-password">
+              <translate>Password</translate>
+            </label>
+            <div class="has-feedback" ng-init="show=false">
+              <input required
+                id="createUsersForm-password"
+                name="password"
+                class="form-control"
+                type="{$show?'text':'password'$}"
+                ng-model="user.password"
+                placeholder="{% trans 'Enter a password' %}">
+              <span ng-click="show=!show"
+                class="form-control-feedback fa fa-eye{$show?'':'-slash'$}">
+              </span>
+            </div>
+            <p class="help-block alert alert-danger"
+              ng-show="createUsersForm.password.$invalid && createUsersForm.password.$dirty">
+              <translate>A password is required.</translate>
+            </p>
+          </div>
+        </div>
+      </div><!-- row -->
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <div class="form-group required"
+            ng-class="{'has-error':createUsersForm.cpassword.$error.match && createUsersForm.cpassword.$dirty}">
+            <label class="control-label required" for="createUsersForm-cpassword">
+              <translate>Confirm Password</translate>
+            </label>
+            <div class="has-feedback" ng-init="cshow=false">
+              <input required
+                id="createUsersForm-cpassword"
+                name="cpassword"
+                class="form-control"
+                type="{$cshow?'text':'password'$}"
+                ng-model="user.cpassword"
+                hz-password-match="createUsersForm.password"
+                placeholder="{% trans 'Confirm the password' %}">
+              <span ng-click="cshow=!cshow"
+                class="form-control-feedback fa fa-eye{$cshow?'':'-slash'$}">
+              </span>
+            </div>
+            <p class="help-block alert alert-danger"
+              ng-show="createUsersForm.cpassword.$error.match && createUsersForm.cpassword.$dirty">
+              <translate>A matching confirmation password is required.</translate>
+            </p>
+          </div>
+        </div>
+      </div><!-- row -->
+
+    </div><!-- clearfix -->
+
+  </div><!-- content -->
+</div><!-- ng-controller -->

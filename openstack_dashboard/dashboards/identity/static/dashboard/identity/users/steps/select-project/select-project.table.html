@@ -1,0 +1,50 @@
+
+<!--table st-table="displayedItems"
+       st-safe-src="items"
+       hz-table class="table-striped table-rsp table-detail modern">
+
+  <thead>
+
+    <tr ng-show="showSearchBar">
+      <th class="search-header" colspan="9">
+        <hz-search-bar group-classes="input-group-sm" icon-classes="fa-search">
+        </hz-search-bar>
+      </th>
+    </tr>
+
+    <tr>
+      <th st-sort="name" class="rsp-p1"><translate>Name</translate></th>
+      <th st-sort="description" class="rsp-p2"><translate>Description</translate></th>
+      <th st-sort="enabled" class="rsp-p3"><translate>Enabled</translate></th>
+      <th class="rsp-p1"><translate>Actions</translate></th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr ng-repeat-start="item in displayedItems track by item.id"
+        ng-if="showItemFunc(item)">
+
+      <td class="rsp-p1">{$ ::item.name $}</td>
+      <td class="rsp-p1">{$ ::item.name $}</td>
+      <td class="rsp-p1">{$ ::item.name $}</td>
+      <td class="action-col">
+        <action-list button-tooltip="item.disabledMessage"
+            bt-model="tooltipModel"
+            bt-disabled="!isAvailableTable || item.enabled"
+            warning-classes="'invalid'">
+          <notifications>
+            <span class="fa fa-exclamation-triangle invalid"
+              ng-show="isAvailableTable && !item.enabled"></span>
+          </notifications>
+          <action action-classes="'btn btn-sm btn-default'"
+                  callback="itemClickAction"
+                  item="item"
+                  disabled="isAvailableTable && !item.enabled">
+            <span class="{$ ::itemButtonClasses $}"></span>
+          </action>
+        </action-list>
+      </td>
+    </tr>
+  </tbody>
+</table-->

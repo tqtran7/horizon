@@ -1,0 +1,24 @@
+
+<div ng-controller="identity.users.workflows.select-project.controller">
+  <h1><translate>Select Project</translate></h1>
+  <div class="content">
+    <div class="subtitle">
+      <translate>
+        At least one project and role must be assigned from this dialog.
+        However, additional projects can be assigned from the Edit User and
+        Edit projects panel.
+      </translate>
+    </div>
+    <transfer-table
+        tr-model="selectFlavorCtrl.transferTableModel"
+        limits="1">
+      <allocated
+        ng-include="path + 'workflows/select-project/select-project.table.html'"
+        ng-model="selectFlavorCtrl.allocatedFlavorFacades.length"
+        validate-number-min="1" name="allocated-flavor">
+      </allocated>
+      <available ng-include="path + 'workflows/select-project/select-project.table.html'">
+      </available>
+    </transfer-table>
+  </div>
+</div>
